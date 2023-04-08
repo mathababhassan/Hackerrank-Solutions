@@ -27,7 +27,7 @@ int main() {
     for(int i = 0; i < s.length(); ++i)
     {
         removeSubString(s, "LR");
-        removeSubstring(s, '#');
+        removeSubString(s, '#');
         if(s.length() < originalLenOfStr)
             ++daysCount;
     }
