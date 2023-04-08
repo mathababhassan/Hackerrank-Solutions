@@ -22,7 +22,7 @@ int main() {
 
     s = removeSubString(s, "#");
 
-    for (int i = 0; i <= s.length(); ++i)
+    for (int i = 0; i <= (int)s.length(); ++i)
     {
         s = removeSubString(s, "LR");
         if (s.length() < originalLenOfStr)
