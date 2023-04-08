@@ -1,8 +1,4 @@
-#include <cmath>
-#include <cstdio>
-#include <vector>
 #include <iostream>
-#include <algorithm>
 #include<string>
 
 using namespace std;
@@ -19,17 +15,23 @@ string removeSubString(string str, const string& substr) {
 
 int main() {
     string s;
-    cin >> s;
-    cin.ignore();
+    getline(cin, s);
+    // cin.ignore();
     size_t originalLenOfStr = s.length();
-    int daysCount;
-    
-    for(int i = 0; i < s.length(); ++i)
+    int daysCount = 0;
+
+    s = removeSubString(s, "#");
+
+    for (int i = 0; i <= s.length(); ++i)
     {
-        removeSubString(s, "LR");
-        removeSubString(s, '#');
-        if(s.length() < originalLenOfStr)
+        s = removeSubString(s, "LR");
+        if (s.length() < originalLenOfStr)
             ++daysCount;
     }
+
+    if (s.length() == 0)
+        cout << daysCount;
+    else
+        cout << "Unfortunately We are doomed!";
     return 0;
 }
