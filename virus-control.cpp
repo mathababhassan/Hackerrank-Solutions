@@ -20,13 +20,30 @@ int main() {
     size_t originalLenOfStr = s.length();
     int daysCount = 0;
 
-    s = removeSubString(s, "#");
 
     for (int i = 0; i <= (int)s.length(); ++i)
     {
-        s = removeSubString(s, "LR");
-        if (s.length() < originalLenOfStr)
+        if (s.find("LR") == string::npos && s.find('#') != string::npos)
+        {
+            s = removeSubString(s, "#");
             ++daysCount;
+        }
+        else if ((s.find("LR")) != string::npos && s.find('#') != string::npos)
+        {
+            s = removeSubString(s, "#");
+            s = removeSubString(s, "LR");
+            ++daysCount;
+
+        }
+        else
+        {
+            s = removeSubString(s, "#");
+            s = removeSubString(s, "LR");
+            if (s.length() < originalLenOfStr)
+                ++daysCount;
+        }
+        // the problem with this code is that it adds days even if the string is empty from # solved 
+        // and doesn't add any day if the string removes only #'s in the first day test case: ###L###R##
     }
 
     if (s.length() == 0)
