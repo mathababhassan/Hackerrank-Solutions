@@ -1,0 +1,58 @@
+#include<iostream>
+#include<cmath>
+#include<vector>
+using namespace std;
+
+
+int main()
+{
+    int s, t, a, b, m, n, range, num, appleCount = 0, orangeCount = 0, dapp, dorg;
+    int x, y;
+    vector<int> app;
+    vector<int> org;
+    
+
+    cin >> s >> t; // this is the range of the house
+    cin >> a >> b; // the center points for apple and orange tree
+    cin >> m >> n; // the number of apples and oranges
+
+   
+
+    // array for apples 
+    for (int i = 0; i < m; ++i)
+    {
+        cin >> num;
+        app.push_back(num);
+    }
+
+    // array for oranges 
+    for (int j = 0; j < n; ++j)
+    {
+        cin >> num;
+        org.push_back(num);
+    }
+
+    for (int i = 0; i < m; ++i)
+    {
+        //if (app.at(i) < 0)
+         //   continue;
+        x = app.at(i) + a;
+        if ((s <= x) && (x <= t))
+            ++appleCount;
+    }
+
+    for (int j = 0; j < n; ++j)
+    {
+       // if (org.at(j) > 0)
+        //    continue;
+        y = org.at(j) + b;
+        if( (s <= y ) && (y<= t))
+            ++orangeCount;
+
+    }
+
+    cout << appleCount << endl;
+    cout << orangeCount;
+
+    return 0;
+}
