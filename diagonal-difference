@@ -1,0 +1,45 @@
+#include<iostream>
+#include<cmath>
+#include<vector>
+#include<string>
+using namespace std;
+
+
+int main()
+{
+    
+    int n, num, diagDiff;
+    cin >> n;
+    int leftDiag = 0, rightDiag = 0;
+
+    vector<vector<int>> vec(n);
+
+        for (int i = 0; i < n; i++)
+        {
+            /* Declaring the size of the column. */
+            int col = n;
+
+            vec[i] = vector<int>(col);
+            for (int j = 0; j < col; j++)
+            {
+                cin >> num;
+                vec[i][j] = num;
+            }
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
+            leftDiag += vec[i][i];
+            for (int j = 0; j < n; ++j)
+            {
+                if ((i + j) == (n-1))
+                    rightDiag += vec[i][j];
+            }
+        }
+
+        diagDiff = abs(leftDiag - rightDiag);
+        cout << diagDiff;
+
+
+    return 0;
+}
