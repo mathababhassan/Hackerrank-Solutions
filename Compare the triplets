@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+/*
+ * Complete the 'compareTriplets' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY a
+ *  2. INTEGER_ARRAY b
+ */
+
+vector<int> compareTriplets(vector<int> a, vector<int> b) {
+    vector<int> scores = {0, 0};
+    
+    for(int i = 0; i < 3; ++i){
+        if(a[i] > b[i])
+            ++scores[0];
+        else if (a[i] < b[i])
+            ++scores[1];    
+}
+    
+    return scores;
+}
+
+
+int main()
+{
+    
+    vector<int> aliceScores(3);
+    vector<int> bobScores(3);
+    
+    for(int i = 0; i < 3; ++i)
+    {
+        cin >> aliceScores[i];
+    }
+    
+    for(int i = 0; i < 3; ++i)
+    {
+        cin >> bobScores[i];
+    }
+    vector<int> scores = compareTriplets(aliceScores, bobScores);
+    
+    cout << scores[0] << ' ' << scores[1];
+    return 0;
+}
