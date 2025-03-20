@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+/*
+ * Complete the 'cutTheSticks' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY arr as parameter.
+ */
+
+vector<int> cutTheSticks(vector<int> arr) {
+    // we save the number of elements in the array for each iteration in an array
+    // we find the min of the arr
+    // then we find how many occurences of the min there is
+    // we remove all min numbers from the array (for loop for the number of occurrences)
+    // we make another for loop with the new size of the array (automatic), subtracting the min each time
+    // we put all of this in a while loop as long as size of array is not empty
+   
+     vector<int> result;
+
+    while (!arr.empty()) {
+        result.push_back(arr.size());
+        int minElement = *min_element(arr.begin(), arr.end());
+        arr.erase(remove(arr.begin(), arr.end(), minElement), arr.end());
+        
+        for (int &element : arr) {
+            element -= minElement;
+        }
+    }
+
+    return result;
+}
+
+int main()
+{
+    
+   int initialNumElements;
+   cin >> initialNumElements;
+   vector<int> arr(initialNumElements);
+   
+   for(int i = 0; i < initialNumElements; ++i){
+    cin >> arr[i];
+    }
+    
+    vector<int> result = cutTheSticks(arr);
+    int sizeOfResultArr = result.size();
+    for(int i = 0; i < sizeOfResultArr; ++i)
+    {
+        cout << result[i] << endl;
+    }
+    
+
+    return 0;
+}
