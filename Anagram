@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int anagram(string s) {
+    int n = s.length();
+    
+    if (n % 2 != 0) {
+        return -1;
+    }
+    
+    int midPos = n / 2;
+    string str1 = s.substr(0, midPos);
+    string str2 = s.substr(midPos, midPos);
+
+    vector<int> occur1(26, 0), occur2(26, 0);
+
+    for (char c : str1) {
+        occur1[c - 'a']++; 
+    }
+    for (char c : str2) {
+        occur2[c - 'a']++; 
+    }
+
+    int changes = 0;
+    for (int i = 0; i < 26; i++) {
+        if (occur1[i] > occur2[i]) {
+            changes += (occur1[i] - occur2[i]); 
+        }
+    }
+
+    return changes;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    
+    for (int i = 0; i < t; ++i) {
+        string s;
+        cin >> s;
+        cout << anagram(s) << endl;
+    }
+
+    return 0;
+}
